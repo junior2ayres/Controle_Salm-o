@@ -160,8 +160,8 @@ export function DatabaseTest() {
             </div>
 
             {testResults.metrics && (
-              <div className="mt-4 p-3 bg-green-50 rounded-lg">
-                <h4 className="font-medium text-green-800 mb-2">Métricas do Banco:</h4>
+              <div className="mt-4 p-3 bg-primary/10 rounded-lg border border-primary/20">
+                <h4 className="font-medium text-primary mb-2">Métricas do Banco:</h4>
                 <div className="grid grid-cols-2 gap-2 text-sm">
                   <div>Total Processado: {testResults.metrics.totalProcessado} kg</div>
                   <div>Eficiência: {testResults.metrics.eficiencia}%</div>
@@ -180,7 +180,7 @@ export function DatabaseTest() {
               <span className="font-medium">Erro na conexão</span>
             </div>
             
-            <div className="p-3 bg-red-50 rounded-lg">
+            <div className="p-3 bg-red-50 rounded-lg border border-red-200">
               <p className="text-sm text-red-800 font-medium">Detalhes do erro:</p>
               <p className="text-sm text-red-700 mt-1">{testResults.error}</p>
             </div>

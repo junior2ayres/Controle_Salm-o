@@ -278,25 +278,25 @@ export function SalmaoForm() {
       {/* Valores Calculados */}
       <Card>
         <CardHeader>
-          <CardTitle className="text-pastel-blue-600">Valores Calculados</CardTitle>
+          <CardTitle className="text-primary">Valores Calculados</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 gap-4">
-            <div className="p-4 bg-pastel-blue-50 rounded-lg">
-              <Label className="text-pastel-blue-600 font-medium">Peso Total</Label>
-              <div className="text-2xl font-bold text-pastel-blue-700">
+            <div className="p-4 bg-primary/10 rounded-lg border border-primary/20">
+              <Label className="text-primary font-medium">Peso Total</Label>
+              <div className="text-2xl font-bold text-primary">
                 {calculatedValues.pesoTotal.toFixed(3)}g
               </div>
             </div>
-            <div className="p-4 bg-pastel-blue-50 rounded-lg">
-              <Label className="text-pastel-blue-600 font-medium">% Peixe Limpo</Label>
-              <div className="text-2xl font-bold text-pastel-blue-700">
+            <div className="p-4 bg-primary/10 rounded-lg border border-primary/20">
+              <Label className="text-primary font-medium">% Peixe Limpo</Label>
+              <div className="text-2xl font-bold text-primary">
                 {calculatedValues.percentualPeixeLimpo.toFixed(2)}%
               </div>
             </div>
-            <div className="p-4 bg-gray-50 rounded-lg">
-              <Label className="text-black font-medium">% Desperdício</Label>
-              <div className="text-2xl font-bold text-black">
+            <div className="p-4 bg-muted rounded-lg border border-border">
+              <Label className="text-foreground font-medium">% Desperdício</Label>
+              <div className="text-2xl font-bold text-foreground">
                 {calculatedValues.percentualDesperdicio.toFixed(2)}%
               </div>
             </div>
@@ -319,7 +319,7 @@ export function SalmaoForm() {
               <Button
                 type="button"
                 onClick={handleCameraCapture}
-                className="w-full h-16 text-lg font-medium bg-blue-600 hover:bg-blue-700"
+                className="w-full h-16 text-lg font-medium bg-primary hover:bg-primary/90"
               >
                 <Camera className="h-6 w-6 mr-2" />
                 Tirar Foto com Câmera
@@ -328,7 +328,7 @@ export function SalmaoForm() {
 
             {/* Area de Upload */}
             <div className="flex items-center justify-center w-full">
-              <label htmlFor="fotoEtiqueta" className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
+              <label htmlFor="fotoEtiqueta" className="flex flex-col items-center justify-center w-full h-64 border-2 border-border border-dashed rounded-lg cursor-pointer bg-muted hover:bg-muted/80 transition-colors">
                 {imagePreview ? (
                   <img
                     src={imagePreview}
@@ -337,12 +337,12 @@ export function SalmaoForm() {
                   />
                 ) : (
                   <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                    <Upload className="w-12 h-12 mb-4 text-gray-500" />
-                    <p className="mb-2 text-lg text-gray-500 text-center">
+                    <Upload className="w-12 h-12 mb-4 text-muted-foreground" />
+                    <p className="mb-2 text-lg text-muted-foreground text-center">
                       <span className="font-semibold">Clique para fazer upload</span><br/>
                       ou arraste e solte
                     </p>
-                    <p className="text-sm text-gray-500">PNG, JPG ou JPEG (MAX. 5MB)</p>
+                    <p className="text-sm text-muted-foreground">PNG, JPG ou JPEG (MAX. 5MB)</p>
                   </div>
                 )}
                 <input

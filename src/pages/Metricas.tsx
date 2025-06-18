@@ -1,4 +1,4 @@
-import { MetricCard } from "@/components/MetricCard";
+import MetricCard from "@/components/MetricCard";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { TrendingUp, TrendingDown, Fish, Users, Calendar, Target, Loader2, AlertTriangle } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
@@ -140,34 +140,30 @@ export default function Metricas() {
         <MetricCard
           title="Eficiência Geral"
           value={`${metricas.eficienciaGeral}%`}
-          subtitle="Últimos 30 dias"
           icon={Target}
-          color="success"
-          trend={{ value: 2.1, label: "vs período anterior", isPositive: true }}
+          trend={{ value: 2.1, isPositive: true }}
+          description="Últimos 30 dias"
         />
         
         <MetricCard
           title="Melhor Performance"
           value={`${metricas.melhorPerformance.eficiencia.toFixed(1)}%`}
-          subtitle={metricas.melhorPerformance.nome}
           icon={TrendingUp}
-          color="success"
+          description={metricas.melhorPerformance.nome}
         />
         
         <MetricCard
           title="Pior Performance"
           value={`${metricas.piorPerformance.eficiencia.toFixed(1)}%`}
-          subtitle={metricas.piorPerformance.nome}
           icon={TrendingDown}
-          color="warning"
+          description={metricas.piorPerformance.nome}
         />
         
         <MetricCard
           title="Volume Processado"
           value={`${metricas.volumeProcessado} kg`}
-          subtitle="Este mês"
           icon={Fish}
-          color="default"
+          description="Este mês"
         />
       </div>
 
@@ -230,12 +226,12 @@ export default function Metricas() {
           {metricas.ranking.length > 0 ? (
             <div className="space-y-4">
               {metricas.ranking.map((funcionario, index) => (
-                <div key={funcionario.nome} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                <div key={funcionario.nome} className="flex items-center justify-between p-4 bg-muted rounded-lg">
                   <div className="flex items-center space-x-4">
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ${
                       index === 0 ? 'bg-yellow-100 text-yellow-800' :
                       index === 1 ? 'bg-gray-100 text-gray-800' :
-                      index === 2 ? 'bg-pastel-blue-100 text-pastel-blue-800' :
+                      index === 2 ? 'bg-primary/10 text-primary' :
                       'bg-blue-100 text-blue-800'
                     }`}>
                       {funcionario.posicao}
@@ -256,7 +252,7 @@ export default function Metricas() {
               ))}
             </div>
           ) : (
-            <div className="text-center py-12 text-gray-500">
+            <div className="text-center py-12 text-muted-foreground">
               <p className="text-lg font-medium mb-2">Nenhum ranking disponível</p>
               <p className="text-sm">Adicione registros para ver o ranking de performance</p>
             </div>

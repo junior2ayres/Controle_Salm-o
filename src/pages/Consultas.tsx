@@ -186,18 +186,18 @@ export default function Consultas() {
                       </td>
                       <td className="p-3 text-right font-mono">
                         <span className={`px-2 py-1 rounded text-xs ${
-                          registro.percentual_peixe_limpo >= 90 ? 'bg-pastel-blue-100 text-pastel-blue-800' :
-                          registro.percentual_peixe_limpo >= 85 ? 'bg-pastel-blue-50 text-pastel-blue-700' :
-                          'bg-gray-100 text-black'
+                          registro.percentual_peixe_limpo >= 90 ? 'bg-green-100 text-green-800' :
+                          registro.percentual_peixe_limpo >= 85 ? 'bg-primary/10 text-primary' :
+                          'bg-muted text-foreground'
                         }`}>
                           {registro.percentual_peixe_limpo.toFixed(1)}%
                         </span>
                       </td>
                       <td className="p-3 text-right font-mono">
                         <span className={`px-2 py-1 rounded text-xs ${
-                          registro.percentual_desperdicio <= 10 ? 'bg-pastel-blue-100 text-pastel-blue-800' :
-                          registro.percentual_desperdicio <= 15 ? 'bg-pastel-blue-50 text-pastel-blue-700' :
-                          'bg-gray-100 text-black'
+                          registro.percentual_desperdicio <= 10 ? 'bg-green-100 text-green-800' :
+                          registro.percentual_desperdicio <= 15 ? 'bg-primary/10 text-primary' :
+                          'bg-muted text-foreground'
                         }`}>
                           {registro.percentual_desperdicio.toFixed(1)}%
                         </span>
@@ -205,7 +205,7 @@ export default function Consultas() {
                       <td className="p-3 text-center">
                         <span className={`px-2 py-1 rounded text-xs ${
                           registro.status === 'excelente' ? 'bg-green-100 text-green-800' :
-                          registro.status === 'bom' ? 'bg-pastel-blue-100 text-pastel-blue-800' :
+                          registro.status === 'bom' ? 'bg-primary/10 text-primary' :
                           registro.status === 'regular' ? 'bg-yellow-100 text-yellow-800' :
                           'bg-red-100 text-red-800'
                         }`}>
@@ -228,7 +228,7 @@ export default function Consultas() {
               </table>
             </div>
           ) : (
-            <div className="text-center py-12 text-gray-500">
+            <div className="text-center py-12 text-muted-foreground">
               <p className="text-lg font-medium mb-2">Nenhum registro encontrado</p>
               <p className="text-sm">
                 {filters.dataInicio || filters.dataFim || filters.funcionario 

@@ -1,98 +1,76 @@
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { 
-  Home, 
-  FileText, 
-  Search, 
-  BarChart3, 
-  FileSpreadsheet, 
-  Settings,
-  Fish
-} from "lucide-react";
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarHeader,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-} from "@/components/ui/sidebar";
-import { useLocation, Link } from "react-router-dom";
+	BarChart3, 
+	FileText, 
+	Search, 
+	Settings, 
+	TrendingUp, 
+	Users, 
+	ClipboardList,
+	Home
+} from 'lucide-react';
 
-const menuItems = [
-  {
-    title: "Dashboard",
-    icon: Home,
-    url: "/",
-  },
-  {
-    title: "Preenchimento",
-    icon: FileText,
-    url: "/preenchimento",
-  },
-  {
-    title: "Consultas",
-    icon: Search,
-    url: "/consultas",
-  },
-  {
-    title: "Métricas",
-    icon: BarChart3,
-    url: "/metricas",
-  },
-  {
-    title: "Relatórios",
-    icon: FileSpreadsheet,
-    url: "/relatorios",
-  },
-  {
-    title: "Configurações",
-    icon: Settings,
-    url: "/configuracoes",
-  },
+interface SidebarItem {
+	icon: React.ComponentType<{ className?: string }>;
+	label: string;
+	path: string;
+}
+
+const sidebarItems: SidebarItem[] = [
+	{ icon: Home, label: 'Início', path: '/' },
+	{ icon: BarChart3, label: 'Dashboard', path: '/dashboard' },
+	{ icon: ClipboardList, label: 'Preenchimento', path: '/preenchimento' },
+	{ icon: Search, label: 'Consultas', path: '/consultas' },
+	{ icon: TrendingUp, label: 'Métricas', path: '/metricas' },
+	{ icon: FileText, label: 'Relatórios', path: '/relatorios' }
 ];
 
-export function AppSidebar() {
-  const location = useLocation();
+const AppSidebar: React.FC = () => {
+	const location = useLocation();
 
-  return (
-    <Sidebar className="border-r border-border">
-      <SidebarHeader className="border-b border-border p-4 bg-black">
-        <div className="flex items-center space-x-3">
-          <div className="p-2 bg-pastel-blue-500 rounded-lg">
-            <Fish className="h-6 w-6 text-white" />
-          </div>
-          <div>
-            <h2 className="text-lg font-semibold text-white">Sistema Salmão</h2>
-            <p className="text-sm text-gray-200">Controle de Limpeza</p>
-          </div>
-        </div>
-      </SidebarHeader>
-      
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel>Menu Principal</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {menuItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton
-                    asChild
-                    isActive={location.pathname === item.url}
-                    className="w-full justify-start"
-                  >
-                    <Link to={item.url}>
-                      <item.icon className="h-4 w-4" />
-                      <span>{item.title}</span>
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-      </SidebarContent>
-    </Sidebar>
-  );
-}
+	return (
+		<aside className="fixed left-0 top-0 z-40 h-screen w-64 bg-sidebar border-r border-sidebar-border transition-transform duration-300 ease-in-out">
+			<div className="flex h-full flex-col">
+				{/* Header */}
+				<div className="flex h-16 items-center justify-center border-b border-sidebar-border bg-sidebar-primary">
+					<h1 className="text-xl font-bold text-sidebar-primary-foreground">
+						Controle Salmão
+					</h1>
+				</div>
+
+				{/* Navigation */}
+				<nav className="flex-1 space-y-1 p-4">
+					{sidebarItems.map((item) => {
+						const Icon = item.icon;
+						const isActive = location.pathname === item.path;
+						
+						return (
+							<Link
+								key={item.path}
+								to={item.path}
+								className={`sidebar-item flex items-center space-x-3 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200 ${
+									isActive 
+										? 'bg-sidebar-primary text-sidebar-primary-foreground shadow-md' 
+										: 'text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground'
+								}`}
+							>
+								<Icon className={`h-5 w-5 ${isActive ? 'text-sidebar-primary-foreground' : 'text-sidebar-foreground'}`} />
+								<span>{item.label}</span>
+							</Link>
+						);
+					})}
+				</nav>
+
+				{/* Footer */}
+				<div className="border-t border-sidebar-border p-4">
+					<div className="text-xs text-sidebar-foreground/60 text-center">
+						© 2024 Sistema de Controle
+					</div>
+				</div>
+			</div>
+		</aside>
+	);
+};
+
+export default AppSidebar;
