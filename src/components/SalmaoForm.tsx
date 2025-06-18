@@ -65,10 +65,27 @@ export function SalmaoForm() {
   };
 
   const handleWeightInputChange = (field: keyof SalmaoFormData, value: string) => {
-    // Permite entrada com até 3 casas decimais
-    const numericValue = parseFloat(value) || 0;
-    const roundedValue = Math.round(numericValue * 1000) / 1000;
-    handleInputChange(field, roundedValue);
+    // Remove espaços e substitui vírgula por ponto para compatibilidade
+    let cleanValue = value.replace(/\s/g, '').replace(',', '.');
+    
+    // Se o campo estiver vazio, define como 0
+    if (cleanValue === '' || cleanValue === '.') {
+      handleInputChange(field, 0);
+      return;
+    }
+    
+    // Permite apenas números, ponto decimal e até 3 casas decimais
+    const numericRegex = /^\d*\.?\d{0,3}$/;
+    
+    if (numericRegex.test(cleanValue)) {
+      const numericValue = parseFloat(cleanValue);
+      
+      // Verifica se é um número válido e não negativo
+      if (!isNaN(numericValue) && numericValue >= 0) {
+        const roundedValue = Math.round(numericValue * 1000) / 1000;
+        handleInputChange(field, roundedValue);
+      }
+    }
   };
 
   const handleCameraCapture = () => {
@@ -169,11 +186,12 @@ export function SalmaoForm() {
               <Input
                 id="nomeSushiman"
                 type="text"
-                placeholder="Digite o nome do sushiman"
+                placeholder="DIGITE O NOME DO SUSHIMAN"
                 value={formData.nomeSushiman}
                 onChange={(e) => handleInputChange("nomeSushiman", e.target.value)}
                 required
                 className="text-lg p-4"
+                uppercase={true}
               />
             </div>
           </div>
@@ -191,10 +209,9 @@ export function SalmaoForm() {
               <Label htmlFor="pesoSalmaoLimpo">Peso Salmão Limpo</Label>
               <Input
                 id="pesoSalmaoLimpo"
-                type="number"
-                step="0.001"
-                min="0"
+                type="text"
                 inputMode="decimal"
+                placeholder="0,000"
                 value={formData.pesoSalmaoLimpo.toFixed(3)}
                 onChange={(e) => handleWeightInputChange("pesoSalmaoLimpo", e.target.value)}
                 required
@@ -205,10 +222,9 @@ export function SalmaoForm() {
               <Label htmlFor="pesoOmega">Peso Ômega</Label>
               <Input
                 id="pesoOmega"
-                type="number"
-                step="0.001"
-                min="0"
+                type="text"
                 inputMode="decimal"
+                placeholder="0,000"
                 value={formData.pesoOmega.toFixed(3)}
                 onChange={(e) => handleWeightInputChange("pesoOmega", e.target.value)}
                 required
@@ -219,10 +235,9 @@ export function SalmaoForm() {
               <Label htmlFor="pesoSkin">Peso Skin</Label>
               <Input
                 id="pesoSkin"
-                type="number"
-                step="0.001"
-                min="0"
+                type="text"
                 inputMode="decimal"
+                placeholder="0,000"
                 value={formData.pesoSkin.toFixed(3)}
                 onChange={(e) => handleWeightInputChange("pesoSkin", e.target.value)}
                 required
@@ -233,10 +248,9 @@ export function SalmaoForm() {
               <Label htmlFor="pesoBarriga">Peso Barriga</Label>
               <Input
                 id="pesoBarriga"
-                type="number"
-                step="0.001"
-                min="0"
+                type="text"
                 inputMode="decimal"
+                placeholder="0,000"
                 value={formData.pesoBarriga.toFixed(3)}
                 onChange={(e) => handleWeightInputChange("pesoBarriga", e.target.value)}
                 required
@@ -247,10 +261,9 @@ export function SalmaoForm() {
               <Label htmlFor="pesoRaspa">Peso Raspa</Label>
               <Input
                 id="pesoRaspa"
-                type="number"
-                step="0.001"
-                min="0"
+                type="text"
                 inputMode="decimal"
+                placeholder="0,000"
                 value={formData.pesoRaspa.toFixed(3)}
                 onChange={(e) => handleWeightInputChange("pesoRaspa", e.target.value)}
                 required
@@ -261,10 +274,9 @@ export function SalmaoForm() {
               <Label htmlFor="pesoDesperdicio" className="text-red-600">Peso Desperdício</Label>
               <Input
                 id="pesoDesperdicio"
-                type="number"
-                step="0.001"
-                min="0"
+                type="text"
                 inputMode="decimal"
+                placeholder="0,000"
                 value={formData.pesoDesperdicio.toFixed(3)}
                 onChange={(e) => handleWeightInputChange("pesoDesperdicio", e.target.value)}
                 required

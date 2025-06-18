@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -51,7 +50,11 @@ export default function Relatorios() {
           <CardContent className="space-y-4">
             <div>
               <Label htmlFor="funcionario">Funcionário</Label>
-              <Input id="funcionario" placeholder="Nome do funcionário" />
+              <Input 
+                id="funcionario" 
+                placeholder="NOME DO FUNCIONÁRIO" 
+                uppercase={true}
+              />
             </div>
             <div>
               <Label htmlFor="periodo">Período</Label>

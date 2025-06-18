@@ -122,9 +122,10 @@ export default function Consultas() {
               <Input
                 id="funcionario"
                 type="text"
-                placeholder="Nome do funcionário"
+                placeholder="NOME DO FUNCIONÁRIO"
                 value={filters.funcionario}
                 onChange={(e) => setFilters({...filters, funcionario: e.target.value})}
+                uppercase={true}
               />
             </div>
             <div className="flex items-end space-x-2">
