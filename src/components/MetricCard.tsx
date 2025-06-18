@@ -23,10 +23,10 @@ export function MetricCard({
   color = "default"
 }: MetricCardProps) {
   const colorClasses = {
-    default: "bg-pastel-black-50 text-pastel-black-600",
-    success: "bg-pastel-orange-50 text-pastel-orange-600",
-    warning: "bg-pastel-orange-100 text-pastel-orange-700",
-    danger: "bg-pastel-black-100 text-pastel-black-700"
+    default: "bg-gray-50 text-black",
+    success: "bg-pastel-blue-50 text-pastel-blue-600",
+    warning: "bg-pastel-blue-100 text-pastel-blue-700",
+    danger: "bg-gray-100 text-black"
   };
 
   return (
@@ -47,7 +47,7 @@ export function MetricCard({
         {trend && (
           <div className="flex items-center mt-2">
             <span className={`text-xs font-medium ${
-              trend.isPositive ? "text-pastel-orange-600" : "text-pastel-black-600"
+              trend.isPositive ? "text-pastel-blue-600" : "text-black"
             }`}>
               {trend.isPositive ? "+" : ""}{trend.value}%
             </span>

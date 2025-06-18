@@ -278,25 +278,25 @@ export function SalmaoForm() {
       {/* Valores Calculados */}
       <Card>
         <CardHeader>
-          <CardTitle className="text-pastel-orange-600">Valores Calculados</CardTitle>
+          <CardTitle className="text-pastel-blue-600">Valores Calculados</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 gap-4">
-            <div className="p-4 bg-pastel-orange-50 rounded-lg">
-              <Label className="text-pastel-orange-600 font-medium">Peso Total</Label>
-              <div className="text-2xl font-bold text-pastel-orange-700">
+            <div className="p-4 bg-pastel-blue-50 rounded-lg">
+              <Label className="text-pastel-blue-600 font-medium">Peso Total</Label>
+              <div className="text-2xl font-bold text-pastel-blue-700">
                 {calculatedValues.pesoTotal.toFixed(3)}g
               </div>
             </div>
-            <div className="p-4 bg-pastel-orange-50 rounded-lg">
-              <Label className="text-pastel-orange-600 font-medium">% Peixe Limpo</Label>
-              <div className="text-2xl font-bold text-pastel-orange-700">
+            <div className="p-4 bg-pastel-blue-50 rounded-lg">
+              <Label className="text-pastel-blue-600 font-medium">% Peixe Limpo</Label>
+              <div className="text-2xl font-bold text-pastel-blue-700">
                 {calculatedValues.percentualPeixeLimpo.toFixed(2)}%
               </div>
             </div>
-            <div className="p-4 bg-pastel-black-50 rounded-lg">
-              <Label className="text-pastel-black-600 font-medium">% Desperdício</Label>
-              <div className="text-2xl font-bold text-pastel-black-700">
+            <div className="p-4 bg-gray-50 rounded-lg">
+              <Label className="text-black font-medium">% Desperdício</Label>
+              <div className="text-2xl font-bold text-black">
                 {calculatedValues.percentualDesperdicio.toFixed(2)}%
               </div>
             </div>

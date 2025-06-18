@@ -28,7 +28,7 @@ const App = () => (
             <main className="flex-1 flex flex-col">
               <header className="border-b bg-white p-4 flex items-center">
                 <SidebarTrigger />
-                <h1 className="ml-4 text-lg font-semibold text-pastel-black-800">
+                <h1 className="ml-4 text-lg font-semibold text-black">
                   Sistema de Controle de Salmão
                 </h1>
               </header>

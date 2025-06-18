@@ -58,14 +58,14 @@ export function AppSidebar() {
 
   return (
     <Sidebar className="border-r border-border">
-      <SidebarHeader className="border-b border-border p-4 bg-pastel-black-800">
+      <SidebarHeader className="border-b border-border p-4 bg-black">
         <div className="flex items-center space-x-3">
-          <div className="p-2 bg-pastel-orange-500 rounded-lg">
+          <div className="p-2 bg-pastel-blue-500 rounded-lg">
             <Fish className="h-6 w-6 text-white" />
           </div>
           <div>
             <h2 className="text-lg font-semibold text-white">Sistema Salmão</h2>
-            <p className="text-sm text-pastel-black-200">Controle de Limpeza</p>
+            <p className="text-sm text-gray-200">Controle de Limpeza</p>
           </div>
         </div>
       </SidebarHeader>
