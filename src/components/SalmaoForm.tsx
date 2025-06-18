@@ -78,6 +78,20 @@ export function SalmaoForm() {
     const numericRegex = /^\d*\.?\d{0,3}$/;
     
     if (numericRegex.test(cleanValue)) {
+      // Se tem ponto decimal, garante que tenha 3 casas decimais
+      if (cleanValue.includes('.')) {
+        const parts = cleanValue.split('.');
+        const integerPart = parts[0] || '0';
+        const decimalPart = parts[1] || '';
+        
+        // Preenche com zeros à direita até ter 3 casas decimais
+        const paddedDecimal = decimalPart.padEnd(3, '0');
+        cleanValue = `${integerPart}.${paddedDecimal}`;
+      } else if (cleanValue !== '') {
+        // Se não tem ponto decimal mas tem valor, adiciona .000
+        cleanValue = `${cleanValue}.000`;
+      }
+      
       const numericValue = parseFloat(cleanValue);
       
       // Verifica se é um número válido e não negativo
@@ -212,7 +226,7 @@ export function SalmaoForm() {
                 type="text"
                 inputMode="decimal"
                 placeholder="0,000"
-                value={formData.pesoSalmaoLimpo.toFixed(3)}
+                value={formData.pesoSalmaoLimpo === 0 ? '' : formData.pesoSalmaoLimpo.toFixed(3)}
                 onChange={(e) => handleWeightInputChange("pesoSalmaoLimpo", e.target.value)}
                 required
                 className="text-lg p-4"
@@ -225,7 +239,7 @@ export function SalmaoForm() {
                 type="text"
                 inputMode="decimal"
                 placeholder="0,000"
-                value={formData.pesoOmega.toFixed(3)}
+                value={formData.pesoOmega === 0 ? '' : formData.pesoOmega.toFixed(3)}
                 onChange={(e) => handleWeightInputChange("pesoOmega", e.target.value)}
                 required
                 className="text-lg p-4"
@@ -238,7 +252,7 @@ export function SalmaoForm() {
                 type="text"
                 inputMode="decimal"
                 placeholder="0,000"
-                value={formData.pesoSkin.toFixed(3)}
+                value={formData.pesoSkin === 0 ? '' : formData.pesoSkin.toFixed(3)}
                 onChange={(e) => handleWeightInputChange("pesoSkin", e.target.value)}
                 required
                 className="text-lg p-4"
@@ -251,7 +265,7 @@ export function SalmaoForm() {
                 type="text"
                 inputMode="decimal"
                 placeholder="0,000"
-                value={formData.pesoBarriga.toFixed(3)}
+                value={formData.pesoBarriga === 0 ? '' : formData.pesoBarriga.toFixed(3)}
                 onChange={(e) => handleWeightInputChange("pesoBarriga", e.target.value)}
                 required
                 className="text-lg p-4"
@@ -264,7 +278,7 @@ export function SalmaoForm() {
                 type="text"
                 inputMode="decimal"
                 placeholder="0,000"
-                value={formData.pesoRaspa.toFixed(3)}
+                value={formData.pesoRaspa === 0 ? '' : formData.pesoRaspa.toFixed(3)}
                 onChange={(e) => handleWeightInputChange("pesoRaspa", e.target.value)}
                 required
                 className="text-lg p-4"
@@ -277,7 +291,7 @@ export function SalmaoForm() {
                 type="text"
                 inputMode="decimal"
                 placeholder="0,000"
-                value={formData.pesoDesperdicio.toFixed(3)}
+                value={formData.pesoDesperdicio === 0 ? '' : formData.pesoDesperdicio.toFixed(3)}
                 onChange={(e) => handleWeightInputChange("pesoDesperdicio", e.target.value)}
                 required
                 className="border-red-200 focus:border-red-400 text-lg p-4"
